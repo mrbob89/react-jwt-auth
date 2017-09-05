@@ -5,6 +5,7 @@ const keys = require('../config/dev');
 function tokenForUser(user) {
   const timestamp = new Date().getTime();
 
+  // Object is a payload that come to passport strategy
   return jwt.encode({ sub: user.id, iat: timestamp }, keys.secret);
 }
 
