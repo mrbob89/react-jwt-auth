@@ -10,7 +10,7 @@ function tokenForUser(user) {
 }
 
 exports.signin = (req, res, next) => {
-  // If user was found passport add user to ther request
+  // If user was found, passport add user to ther request
   res.send({ token: tokenForUser(req.user) });
 };
 
