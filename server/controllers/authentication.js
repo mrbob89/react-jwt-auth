@@ -9,6 +9,11 @@ function tokenForUser(user) {
   return jwt.encode({ sub: user.id, iat: timestamp }, keys.secret);
 }
 
+exports.signin = (req, res, next) => {
+  // If user was found passport add user to ther request
+  res.send({ token: tokenForUser(req.user) });
+};
+
 exports.signup = (req, res, next) => {
   const { email, password } = req.body;
 
