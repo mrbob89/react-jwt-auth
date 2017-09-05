@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-import './index.css';
 import App from './App';
+import Signin from './components/auth/signin';
 import rootReducer from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -15,6 +15,7 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(rootReducer)}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
+        <Route path="signin"  component={Signin} />
       </Route>
     </Router>
   </Provider>, document.getElementById('root'));
