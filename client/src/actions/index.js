@@ -20,11 +20,27 @@ export const signinUser = ({ email, password }) => async dispatch => {
     }
 };
 
+export const signupUser = ({ email, password }) => async dispatch => {
+    try {
+        const response = await axios.post(`${ROOT_URL}/signup`, {
+            email,
+            password
+        });
+
+        dispatch({ type: AUTH_USER });
+
+        localStorage.setItem('token', response.data.token);
+        browserHistory.push('/feature');
+    } catch (err) {
+        dispatch(authError(err.response.data.error));
+    }
+};
+
 export const signoutUser = () => {
     localStorage.removeItem('token');
 
     return { type: UNAUTH_USER };
-}
+};
 
 export const authError = error => {
     return {
